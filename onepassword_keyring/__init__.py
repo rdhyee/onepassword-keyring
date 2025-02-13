@@ -117,7 +117,7 @@ class OnePasswordBackend(backend.KeyringBackend):
         Return a credential object stored in the active keyring. Unlike the calling keyring.get_credential, this method ignores the username argument.
         """
         _auth()
-        command = f'op item get "{service}"'
+        command = f'op item get --reveal "{service}"'
         stdout, stderr = cli_exec(command)
         if stderr:
             raise RuntimeError("Failed to get item: " + stderr)
